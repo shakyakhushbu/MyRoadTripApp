@@ -1,0 +1,21 @@
+<%= link_to "Show All Trips", trips_path %><br>
+
+<h1>Create New Trip</h1>
+
+<%= form_with model: @destination do |form| %>
+  <div>
+    <%= form.label :city_name %><br>
+    <%= form.text_field :city_name %>
+  </div>
+
+  <div>
+    <%= form.label :state_name %><br>
+    <%= form.text_field :state_name %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.submit %>
+  </div>
+ 
+<% end %>

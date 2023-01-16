@@ -3,13 +3,13 @@
   margin-right:30px;
 }
 .navbar-light {
-  background-color: black !important;
+  background-color: skyblue !important;
   border: none !important;
   border-width:0!important;
 
 }
 nav .navbar-nav li a{
-  color: grey !important;
+  color: black !important;
   }
   img.card-img-top{
     border: 15px solid rgb(149, 226, 149);
@@ -21,3 +21,13 @@ nav .navbar-nav li a{
     margin-top: 5%;
     margin-bottom: 5%;
   }  
+ .card{
+  border: green;
+  } 
+
+table, th, td {
+  border:1px solid black;
+}
+th, td {
+  padding: 15px;
+}  

@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
+  # layout :products_layout
+
   def after_sign_in_path_for(resource)
     if current_user.role == 'admin'
-      new_dashboard_session_path
+      trips_path
     else
       root_path
     end

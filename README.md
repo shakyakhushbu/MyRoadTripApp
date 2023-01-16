@@ -51,3 +51,7 @@ then create role enum
 rails g devise:views admins
 rails g devise:controllers admins
 rails g devise admins
+
+<!-- <div>
+    <%= select_tag "Destination", options_from_collection_for_select(Destination.all, :id, :city_name) %>
+  </div> -->

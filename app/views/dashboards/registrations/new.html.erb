@@ -24,6 +24,11 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+  <div class="field">
+    <%= f.label :trip_name %><br />
+    <%= f.text_field :trip, autocomplete: "trip_name" %>
+  </div>
+
 <% end %>
 
 <%= render "dashboards/shared/links" %>

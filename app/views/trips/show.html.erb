@@ -1,0 +1,34 @@
+<h2>Trip Details</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Trip Name</th>
+    <th>Trip Type</th>
+    <th>Trip Amount</th>
+    <th>Trip Start Date</th>
+    <th>Trip End Date</th>
+  </tr>
+  <tr>
+    <td><%= @trip.trip_name %></td>
+    <td><%= @trip.trip_type %></td>
+    <td><%= @trip.amount %></td>
+    <td><%= @trip.start_date %></td>
+    <td><%= @trip.end_date %></td>
+  </tr>
+  
+</table>
+
+<br>
+<table style="width:100%">
+<tr>
+<th>Edit Trip</th>
+<th>Destroy Trip</th>
+<th>Go To All Trip List</th></tr>
+<tr>
+<td><%= link_to "Edit Trips", edit_trip_path %></td>
+<td><%= link_to "Destroy", trip_path(@trip), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></td>
+<td><%= link_to "Show All Trips", trips_path %></td></tr>
+</table>

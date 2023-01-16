@@ -1,0 +1,12 @@
+<h1>Your Trip List</h1>
+
+<ul>
+  <% @destination.each do |destination| %>
+    <li>
+        <%= link_to destination.city_name, destination %>
+      </a>
+    </li>
+  <% end %>
+
+</ul>
+<%= link_to 'Show All Trips', trips_path %>
