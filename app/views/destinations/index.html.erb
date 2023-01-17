@@ -1,12 +1,24 @@
-<h1>Your Trip List</h1>
+<table>
+  <tr>
+    <th>Destination List</th>
+  </tr>
+  <tr>
+    <td>
+        <% @destination.each do |x| %><br>
+      <%= link_to x.city_name, x %>
+      <% end %>
+    </td>
+  </tr>
+</table>
 
-<ul>
-  <% @destination.each do |destination| %>
-    <li>
-        <%= link_to destination.city_name, destination %>
-      </a>
-    </li>
-  <% end %>
+<br>
 
-</ul>
-<%= link_to 'Show All Trips', trips_path %>
+<table style="width:100%">
+<tr>
+<th>Add new Trip Here</th>
+<tr>
+<td><%= link_to "Show Trip", trips_path %><br>
+</td>
+<td><%= link_to "Add Destination", new_destination_path %><br>
+</td>
+</table>

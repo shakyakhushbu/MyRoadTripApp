@@ -1,6 +1,5 @@
-<%= link_to "Show All Trips", trips_path %><br>
 
-<h1>Create New Trip</h1>
+<h1>Create New Destination</h1>
 
 <%= form_with model: @destination do |form| %>
   <div>
@@ -12,10 +11,16 @@
     <%= form.label :state_name %><br>
     <%= form.text_field :state_name %>
   </div>
+  
+  <%= fields_for :hotel, @destination.hotel do |hotel_name| %>
+  <%= hotel_name.label :hotel_name %><br>
+  <%= hotel_name.text_field :hotel_name %><br>
+  <% end %>
 
   <br>
   <div>
     <%= form.submit %>
   </div>
  
-<% end %>
+<% end %><br>
+<%= link_to "Show All Destinations ", destinations_path %><br>

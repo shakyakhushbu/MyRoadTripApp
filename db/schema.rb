@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_16_112306) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_17_123618) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_112306) do
     t.string "state_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "hotel_name"
+  end
+
+  create_table "hotels", force: :cascade do |t|
+    t.bigint "destination_id"
+    t.string "hotel_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["destination_id"], name: "index_hotels_on_destination_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -50,6 +59,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_112306) do
     t.integer "amount"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.bigint "destination_id"
+    t.index ["destination_id"], name: "index_trips_on_destination_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,4 +80,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_112306) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "trips", "destinations"
 end

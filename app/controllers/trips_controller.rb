@@ -10,8 +10,15 @@ class TripsController < ApplicationController
   end
 
   def create
+    # a.destination_trips.create(trip_id: 24)
+    # params[:trip]
+    # params[:trip][:id]
     @trip = Trip.new(trip_params)
     if @trip.save
+    byebug
+      # @b = Destination.find(params[:destination_id])
+      @trip.destination_trips.create(destination_id: params[:destination])
+
       redirect_to trips_path
     else
       render :index, status: :unprocessable_entity
@@ -39,6 +46,6 @@ class TripsController < ApplicationController
   end
   private
   def trip_params
-    params.require(:trip).permit(:trip_type, :trip_name, :amount, :start_date, :end_date)
+    params.require(:trip).permit(:trip_type, :trip_name, :amount, :start_date, :end_date, :destination_id)
   end
 end

@@ -1,0 +1,30 @@
+<h2>Destination Details</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Destination Name</th>
+    <th>Hotel Name</th>
+    
+  </tr>
+  <tr>
+    <td><%= @destination.city_name %></td>
+    <td><%= @destination.hotel.hotel_name %></td>
+   
+  </tr>
+  
+</table>
+
+<br>
+<table style="width:100%">
+<tr>
+<th>Edit Destination</th>
+<th>Destroy Destination</th>
+<th>Go To All Trip List</th></tr>
+<tr>
+<td><%= link_to "Edit Destination", edit_destination_path %></td>
+<td><%= link_to "Destroy", destination_path(@destination), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></td>
+<td><%= link_to "Show All Trips", destinations_path %></td></tr>
+</table>

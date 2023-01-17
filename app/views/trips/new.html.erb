@@ -27,11 +27,12 @@
   </div>
   <br>
    <div>
-    <%= select_tag "Destination", options_from_collection_for_select(Destination.all, :id, :city_name) %>
+      <%= select_tag "destination", options_from_collection_for_select(Destination.all, :id, :city_name) %>
   </div> 
  
   <br>
   <div>
     <%= form.submit %>
   </div>
+ 
 <% end %>

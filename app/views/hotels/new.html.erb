@@ -1,0 +1,18 @@
+
+<h1>Create New Hotel</h1>
+
+<%= form_with model: @hotel do |form| %>
+  <div>
+    <%= form.label :hotel_name %><br>
+    <%= form.text_field :hotel_name %>
+  </div>
+
+  
+
+  <br>
+  <div>
+    <%= form.submit %>
+  </div>
+ 
+<% end %><br>
+<%= link_to "Show All Destinations ", hotels_path %><br>

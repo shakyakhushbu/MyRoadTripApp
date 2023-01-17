@@ -10,8 +10,11 @@ class DestinationsController < ApplicationController
   end
 
   def create
+    # a.create_hotel(hotel_name: 'ok')
     @destination = Destination.new(destination_params)
     if @destination.save
+      byebug
+      @destination.create_hotel(hotel_name: params[:hotel][:hotel_name])
       redirect_to destinations_path
     else
       render :index, status: :unprocessable_entity
@@ -39,7 +42,7 @@ class DestinationsController < ApplicationController
   end
   private
   def destination_params
-    params.require(:destination).permit(:city_name, :state_name)
+    params.require(:destination).permit(:city_name, :state_name, :hotel_name)
   end
 
 end

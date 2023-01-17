@@ -55,3 +55,7 @@ rails g devise admins
 <!-- <div>
     <%= select_tag "Destination", options_from_collection_for_select(Destination.all, :id, :city_name) %>
   </div> -->
+
+   <%= select_tag "Destination", options_from_collection_for_select(Destination.all, :destination_trips, :city_name) %>
+
+   <%= select_tag "Destination", options_from_collection_for_select(Destination.all, :id, :city_name) %>

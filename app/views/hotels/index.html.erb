@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <th>Trip List</th>
+  </tr>
+  <tr>
+    <td>
+        <% @hotel.each do |x| %><br>
+      <%= link_to x.hotel_name, x %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<br>
+
+<table style="width:100%">
+<tr>
+<th>Add new Hotel Here</th>
+<th>Add Hotel</th>
+<tr>
+<td><%= link_to "Add Trip", hotels_path %><br>
+</td>
+<td><%= link_to "Add Destinations For Your Trip", new_hotel_path %></td>
+</table>
