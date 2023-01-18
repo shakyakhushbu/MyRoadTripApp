@@ -6,7 +6,6 @@
   background-color: skyblue !important;
   border: none !important;
   border-width:0!important;
-
 }
 nav .navbar-nav li a{
   color: black !important;
@@ -31,3 +30,6 @@ table, th, td {
 th, td {
   padding: 15px;
 }  
+.row .col{
+  float: left;
+}

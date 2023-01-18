@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :dashboards
   # devise_for :users
-  root  "home#index"
+  root  "homes#index"
   devise_for :users, controllers: {
         sessions: 'users/sessions',
         passwords: 'users/passwords',
@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :trips
   resources :destinations
   resources :restaurants
+  # resources :home
+  resources :homes
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

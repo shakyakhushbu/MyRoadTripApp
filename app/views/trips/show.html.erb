@@ -1,5 +1,5 @@
 <h2>Trip Details</h2>
-
+<%= image_tag(@trip.main_image,  size: "200x200") if @trip.main_image.attached?%>
 <table style="width:100%">
   <tr>
     <th>Trip Name</th>
@@ -15,6 +15,7 @@
     <td><%= @trip.amount %></td>
     <td><%= @trip.start_date %></td>
     <td><%= @trip.end_date %></td>
+    <td><%= @trip.destinations.city_name %></td>
   </tr>
   
 </table>
@@ -33,3 +34,5 @@
                   } %></td>
 <td><%= link_to "Show All Trips", trips_path %></td></tr>
 </table>
+
+

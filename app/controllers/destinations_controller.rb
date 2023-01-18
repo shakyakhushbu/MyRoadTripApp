@@ -42,7 +42,7 @@ class DestinationsController < ApplicationController
   end
   private
   def destination_params
-    params.require(:destination).permit(:city_name, :state_name, :hotel_name)
+    params.require(:destination).permit(:city_name, :state_name)
   end
 
 end
