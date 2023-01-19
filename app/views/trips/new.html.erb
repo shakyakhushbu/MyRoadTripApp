@@ -35,7 +35,8 @@
 
   <br>
    <div>
-      <%= select_tag "destination", options_from_collection_for_select(Destination.all, :id, :city_name) %>
+      <%= select_tag "destination_id", options_from_collection_for_select(Destination.all, :id, :city_name) %>
+      <!-- <#%= collection_select(:trip, :city_name, Destination.all, :city_name, :city_name) %> -->
   </div> 
  
   <br>

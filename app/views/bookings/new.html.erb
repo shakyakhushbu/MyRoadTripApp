@@ -1,0 +1,23 @@
+
+<h1>Create New Trip</h1>
+
+<%= form_with model: @booking do |form| %>
+  <div>
+    <%= form.label :user_name %><br>
+    <%= form.text_field :user_name %>
+  </div>
+
+  <div>
+    <%= form.label :contact_detail %><br>
+    <%= form.number_field :contact_detail %>
+  </div>
+
+  
+  <br>
+  <div>
+    <%= form.submit "Book" %>
+  </div>
+
+  
+ 
+<% end %>

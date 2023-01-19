@@ -1,5 +1,7 @@
 <h2>Trip Details</h2>
-<%= image_tag(@trip.main_image,  size: "200x200") if @trip.main_image.attached?%>
+<%= image_tag(@trip.main_image,  size: "200x200") if @trip.main_image.attached? %>
+<br>
+<br>
 <table style="width:100%">
   <tr>
     <th>Trip Name</th>
@@ -7,6 +9,7 @@
     <th>Trip Amount</th>
     <th>Trip Start Date</th>
     <th>Trip End Date</th>
+    <th>Destination Id</th>
     <th>Destination Name</th>
   </tr>
   <tr>
@@ -15,24 +18,45 @@
     <td><%= @trip.amount %></td>
     <td><%= @trip.start_date %></td>
     <td><%= @trip.end_date %></td>
-    <td><%= @trip.destinations.city_name %></td>
+    <td><%= @trip.destination_id %></td>
+    <td><%= @trip.destination_trips.last&.destination&.city_name %></td> 
   </tr>
-  
 </table>
 
 <br>
+<!-- <table style="width:100%">
+<tr>
+<th>Edit Trip</th>
+<th>Destroy Trip</th>
+<th>Go To All Trip List</th></tr>
+<tr>
+<td><#%= link_to "Edit Trips", edit_trip_path %></td>
+<td><#%= link_to "Destroy", trip_path(@trip), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></td>
+<td><#%= link_to "Show All Trips", trips_path %></td></tr>
+</table>
+ -->
+
+
+<% if current_user.admin? %>
 <table style="width:100%">
 <tr>
 <th>Edit Trip</th>
 <th>Destroy Trip</th>
 <th>Go To All Trip List</th></tr>
 <tr>
-<td><%= link_to "Edit Trips", edit_trip_path %></td>
-<td><%= link_to "Destroy", trip_path(@trip), data: {
+  <td><%= link_to "Edit Trips", edit_trip_path %></td>
+  <td><%= link_to "Destroy", trip_path(@trip), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></td>
-<td><%= link_to "Show All Trips", trips_path %></td></tr>
+  <td><%= link_to "Show All Trips", trips_path %></td></tr>
 </table>
+<% else %>
+<h4>Book Your Trip Now</h4>
 
+<%= link_to 'Book Your Trip Now' , new_booking_path %>
 
+<% end %>

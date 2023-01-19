@@ -10,7 +10,6 @@ class DestinationsController < ApplicationController
   end
 
   def create
-    # a.create_hotel(hotel_name: 'ok')
     @destination = Destination.new(destination_params)
     if @destination.save
       byebug

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_18_125119) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_19_123311) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_125119) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "trip_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "user_name"
+    t.integer "contact_detail"
+    t.index ["trip_id"], name: "index_bookings_on_trip_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "dashboards", force: :cascade do |t|
@@ -79,6 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_125119) do
     t.integer "amount"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.string "city_name"
     t.index ["trip_id"], name: "index_homes_on_trip_id"
   end
 
@@ -99,6 +111,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_125119) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.bigint "destination_id"
+    t.string "city_name"
     t.index ["destination_id"], name: "index_trips_on_destination_id"
   end
 

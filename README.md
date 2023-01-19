@@ -59,3 +59,8 @@ rails g devise admins
    <%= select_tag "Destination", options_from_collection_for_select(Destination.all, :destination_trips, :city_name) %>
 
    <%= select_tag "Destination", options_from_collection_for_select(Destination.all, :id, :city_name) %>
+
+
+   <%= a.destination_trips.last.destination.city_name %>
+
+   <td><%= @trip.destination_trips.find_by(:destination_id).destination.city_name %></td>
