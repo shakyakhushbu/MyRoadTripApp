@@ -75,3 +75,4 @@ end
 gem 'devise'
 gem 'byebug'
 gem 'pg'
+gem 'rubocop-rails',  require: false

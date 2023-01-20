@@ -20,6 +20,12 @@
     <td><%= @trip.end_date %></td>
     <td><%= @trip.destination_id %></td>
     <td><%= @trip.destination_trips.last&.destination&.city_name %></td> 
+      <!-- <td> -->
+        
+        <#%= @trip.destination_trips.last&.destination_trips.each do |x|
+        x.city_name 
+         end %>
+      <!-- </td> -->
   </tr>
 </table>
 

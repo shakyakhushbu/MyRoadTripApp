@@ -110,8 +110,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_123311) do
     t.integer "amount"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.bigint "destination_id"
     t.string "city_name"
+    t.bigint "destination_id"
     t.index ["destination_id"], name: "index_trips_on_destination_id"
   end
 

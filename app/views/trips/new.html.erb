@@ -35,13 +35,20 @@
 
   <br>
    <div>
-      <%= select_tag "destination_id", options_from_collection_for_select(Destination.all, :id, :city_name) %>
+      <%= select_tag "destination_id[]", options_from_collection_for_select(Destination.all, :id, :city_name),  multiple: true %>
       <!-- <#%= collection_select(:trip, :city_name, Destination.all, :city_name, :city_name) %> -->
+      <!-- <%#= form.label :city_name %><br> -->
+      <%# Destination.all.each do |city| %>
+      <%#= form.label city.city_name %>
+      <!-- <#%= form.check_box :destination_id %> -->
+      <%#= form.check_box :destination_id %>
+      <%# end %>
   </div> 
  
   <br>
   <div>
     <%= form.submit %>
   </div>
- 
+
 <% end %>
+
