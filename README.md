@@ -64,3 +64,5 @@ rails g devise admins
    <%= a.destination_trips.last.destination.city_name %>
 
    <td><%= @trip.destination_trips.find_by(:destination_id).destination.city_name %></td>
+
+   a.bookings.pluck(:user_id)

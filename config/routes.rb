@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :dashboards
   # devise_for :users
+  get '/bookings/display', to: 'bookings#display'
   root  "homes#index"
   devise_for :users, controllers: {
         sessions: 'users/sessions',
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   # resources :home
   resources :homes
   resources :bookings
+  get '/users/display', to: 'users#display'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

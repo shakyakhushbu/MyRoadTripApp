@@ -1,29 +1,44 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_user!, except: [:index], notice: 'you must sign in first!'
+  # before_action :authenticate_user!, except: [:index], notice: 'you must sign in first!'
+  # before_action :authenticate_user!
   def index
+    # byebug
     @booking = Booking.all
+    @user = current_user
   end
   def show
-    @booking = Booking.find(params[:id])
+    # @booking = Booking.find(params[:id])
   end
   def new
-    @booking = Booking.new 
+    # byebug
+
+    # @trip = Trip.find_by_id(params[:trip_id])
+
+    @booking = Booking.new
+    
   end
   def create
-    @trip = Trip.last
-    @user = User.last
+    byebug
+
+    
+
     @booking = Booking.new(params_booking)
-    @trip.booking.create(user_id: @user.id, user_name: params[:booking][:user_name], contact_detail: params[:booking][:contact_detail])
+    @trip = Trip.find_by_id(params[:trip_id])
+   byebug
+    
+    current_user.bookings.create(trip_id: params[:trip_id], user_name: params[:booking][:user_name], contact_detail: params[:booking][:contact_detail])
     flash[:notice] = "Thank You!! Your Booking is confirmed"
-    # redirect_to root_path
-      
-    redirect_to bookings_path
-    # if @booking.save 
-    #   # byebug
-    #   redirect_to @booking
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
+    redirect_to root_path
+    byebug
+    
+  end
+  def display 
+    # @user = User.last
+    # @booking = Booking.last
+    # @trip = Trip.last
+    # byebug
+    # @trip = Trip.find_by_id(params[:trip_id])
+    
   end
   private 
   def params_booking

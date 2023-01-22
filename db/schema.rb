@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_19_123311) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
+ActiveRecord::Schema[7.0].define(version: 2023_01_22_120840) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -43,8 +40,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_123311) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.bigint "trip_id"
-    t.bigint "user_id"
+    t.integer "trip_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_name"
@@ -66,8 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_123311) do
   end
 
   create_table "destination_trips", force: :cascade do |t|
-    t.bigint "destination_id"
-    t.bigint "trip_id"
+    t.integer "destination_id"
+    t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["destination_id"], name: "index_destination_trips_on_destination_id"
@@ -84,7 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_123311) do
   create_table "homes", force: :cascade do |t|
     t.string "trip_name"
     t.string "trip_type"
-    t.bigint "trip_id"
+    t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "amount"
@@ -95,7 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_123311) do
   end
 
   create_table "hotels", force: :cascade do |t|
-    t.bigint "destination_id"
+    t.integer "destination_id"
     t.string "hotel_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -110,8 +107,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_123311) do
     t.integer "amount"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.integer "destination_id"
     t.string "city_name"
-    t.bigint "destination_id"
     t.index ["destination_id"], name: "index_trips_on_destination_id"
   end
 
@@ -128,6 +125,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_123311) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

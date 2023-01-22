@@ -3,5 +3,6 @@ class Trip < ApplicationRecord
   has_many :destinations, through: :destination_trips
   # has_one :home,  dependent: :destroy
   has_one_attached :main_image
-  has_many :booking
+  has_many :bookings
+  has_many :users, through: :bookings
 end

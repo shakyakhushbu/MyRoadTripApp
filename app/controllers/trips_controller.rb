@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   # before_action :authenticate_user!, only: [:edit, :destroy, :update]
-
+  # skip_before_action :authenticate_user!
   def index 
     @trip = Trip.all
   end

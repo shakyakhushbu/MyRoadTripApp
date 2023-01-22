@@ -1,6 +1,8 @@
 <table>
   <tr>
     <th>Trip List</th>
+    <th>Add new Trip Here</th>
+    <th>Add Destination</th>
   </tr>
   <tr>
     <td>
@@ -8,17 +10,20 @@
       <%= link_to trip.trip_name, trip %>
       <% end %>
     </td>
-  </tr>
+    <td><%= link_to "Add Trip", new_trip_path %><br>
+</td>
+<td><%= link_to "Show All Destination", destinations_path %></td>
+</tr>
 </table>
 
-<br>
+<%# <br>
 
 <table style="width:100%">
 <tr>
 <th>Add new Trip Here</th>
 <th>Add Destination</th>
 <tr>
-<td><%= link_to "Add Trip", new_trip_path %><br>
-</td>
-<td><%= link_to "Show All Destination", destinations_path %></td>
-</table>
+<td><%= link_to "Add Trip", new_trip_path %>
+<%# </td> %>
+<%# <td>= link_to "Show All Destination", destinations_path</td> %>
+<%# </table>  %>
