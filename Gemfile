@@ -76,3 +76,4 @@ gem 'devise'
 gem 'byebug'
 gem 'pg'
 gem 'rubocop-rails',  require: false
+# gem 'has_secure_token'

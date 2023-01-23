@@ -1,6 +1,26 @@
-<% if current_user.bookings.count == 0%>
-<p>You have no booking </p>
+<% if current_user.bookings.count == 0 %>
+<p>You have no booking yet</p>
 <% else %>
-<%= current_user.bookings.pluck(:id) %><br>
-<%= current_user.first_name %>
+<table>
+  <tr>
+    <th>Booking Token</th>
+    <th>Trip Name</th>
+    <th>Trip Amount</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+  </tr>
+    <% current_user.bookings.each do |booking| %>
+  <tr>
+    <td><%= booking.booking_token %></td>
+    <td><%= booking.trip.trip_name %></td>
+    <td><%= booking.trip.amount %></td>
+    <td><%= booking.trip.start_date %></td>
+    <td><% c =  booking.trip.end_date %></td>
+  </tr>
+    <% end %>
+ </table>
 <% end %>
+
+
+
+ 

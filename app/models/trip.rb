@@ -5,4 +5,6 @@ class Trip < ApplicationRecord
   has_one_attached :main_image
   has_many :bookings
   has_many :users, through: :bookings
+  validates :trip_name, uniqueness: true
+  validates :amount, numericality: { greater_than: 2000}
 end

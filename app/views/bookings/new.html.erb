@@ -1,5 +1,5 @@
 
-<h1>Create New Trip</h1>
+<h1>Book Your Trip Now</h1>
 
 <%= form_with model: @booking do |form| %>
   <div>
@@ -18,7 +18,7 @@
     <%#= form.hidden_field :trip_id, value: trip.id %>
     <%= hidden_field_tag :trip_id, params[:trip_id] %>
     <%= form.submit "Book" %>
-    <%# <%= button_tag 'Edit', value: trip.id, type: :submit, name: :edit %> %>
+    <%# <%= button_tag 'Edit', value: trip.id, type: :submit, name: :edit %>
   </div> 
 
    
