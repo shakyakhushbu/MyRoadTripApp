@@ -1,7 +1,7 @@
 <div class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-  <%= image_tag "logo.png", size: "70x70" %>
+  <%= image_tag "logo.png", size: "60x60" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,94 +9,54 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
         <%= link_to "Home", root_path,class: 'nav-link' %>
-
-          
         </li>
         <li class="nav-item">
-        <%= link_to "About", root_path,class: 'nav-link' %>
+        <%= link_to "About", abouts_path,class: 'nav-link' %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-        <%= link_to "Check Your Bookikng", bookings_path,class: 'nav-link' %>
-          
-        </li>
-        <li class="nav-link"
-        <% if user_signed_in? %>
         
+        <div class="d-flex">
+          <%= form_tag(trips_search_path, method: 'post', authenticity_token: false) do %>
+          <div class='input-group'>
+            <%= text_field_tag(:search, params[:search], class: "form-control me-1", type: "search", placeholder: "Search by Destintaion,range or date") %>
+            <%= submit_tag("Search", class: "btn btn-outline-success") %>
+          </div>
+          <% end %>
+        </div>
+
+        
+        <li class="nav-link">
+        <% if user_signed_in? %>
+  
+        <li class="nav-item">
+          <%= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete} %>
+        </li> 
+          <%if current_user.admin? %>
+           <li class="nav-item">
+          <%= link_to "All Trips", trips_path,class: 'nav-link' %>
+          </li>
+          <% else %>
+           <li class="nav-item">
+          <%= link_to "Your booking", bookings_path,class: 'nav-link' %>
+          </li>
+          <% end %>
           <li class="nav-item">
-            <%= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete} %>
-          <%# </li> %>
-          <li class="nav-item">
-            <%= current_user.first_name %>
-            </li>
+          <%= current_user.first_name %>
+          </li>
         <% else %>
             <li class="nav-item">
-            <%= link_to 'Sign Up', new_user_registration_path %>
-            <%# </li> %>
-            <%# <li class="nav-item"> %>
-            <%= link_to 'Login', new_user_session_path %>
+              <%= link_to 'Sign Up', new_user_registration_path,class: 'nav-link' %>
             </li>
-            
-         <% end %>
+            <li class="nav-item">
+            <%= link_to 'Login', new_user_session_path,class: 'nav-link' %>
+            </li>
+        <% end %>
         </li>
-    
-       
+        
+        </form>
       </ul>
-      
     </div>
   </div>
+
 </nav>
-</div>
-
-<div class = 'container' pt-0>
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <%= image_tag "lotus.jpeg", size: "1300x500" %>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <%= image_tag "mahal.jpeg", size: "1300x500" %>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <%= image_tag "nature.jpeg", size: "1300x500" %>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
 </div>
 

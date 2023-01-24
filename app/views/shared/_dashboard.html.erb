@@ -1,19 +1,19 @@
-<div class="container">
+<!-- <div class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-  <%= image_tag "logo.png", size: "70x70" %>
+  <#%= image_tag "logo.png", size: "70x70" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-        <%= link_to "Home", root_path,class: 'nav-link' %>
+        <#%= link_to "Home", root_path,class: 'nav-link' %>
 
           
         </li>
         <li class="nav-item">
-        <%= link_to "About", root_path,class: 'nav-link' %>
+        <#%= link_to "About", root_path,class: 'nav-link' %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -27,18 +27,18 @@
           </ul>
         </li>
         <li class="nav-link"
-        <% if user_signed_in? %>
+        <%# if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete} %>
+            <#%= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete} %>
           </li>
-        <% else %>
+        <#% else %>
             <li class="nav-item">
-            <%= link_to 'Sign Up', new_user_registration_path %>
+            <#%= link_to 'Sign Up', new_user_registration_path %>
             </li>
             <li class="nav-item">
-            <%= link_to 'Login', new_user_session_path %>
+            <%#= link_to 'Login', new_user_session_path %>
             </li>
-         <% end %>
+         <#% end %>
         </li>
     
        
@@ -47,9 +47,9 @@
     </div>
   </div>
 </nav>
-</div>
+</div> -->
 
-<div class = 'container' pt-0>
+<!-- <div class = 'container' pt-0>
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -58,21 +58,21 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <%= image_tag "lotus.jpeg", size: "1300x500" %>
+      <%#= image_tag "lotus.jpeg", size: "1300x500" %>
       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <%= image_tag "mahal.jpeg", size: "1300x500" %>
+      <%#= image_tag "mahal.jpeg", size: "1300x500" %>
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <%= image_tag "nature.jpeg", size: "1300x500" %>
+      <%#= image_tag "nature.jpeg", size: "1300x500" %>
       <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
@@ -89,13 +89,13 @@
   </button>
 </div>
 
-</div>
-# <div class='container'>
+</div> -->
+<!-- # <div class='container'>
 # <h1>Welcome Admin</h1>
 # </div>
 # <div class='container'>
-#  <%= link_to "Create Trips", trips_path %>
+#  <#%= link_to "Create Trips", trips_path %>
 # </div>
 # <div class='container'>
-#  <%= link_to "Add Cities For Your Trips", trips_path %>
-# </div>
+#  <#%= link_to "Add Cities For Your Trips", trips_path %>
+# </div> -->

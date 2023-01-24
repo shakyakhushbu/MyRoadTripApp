@@ -1,17 +1,24 @@
 class TripsController < ApplicationController
   # before_action :authenticate_user!, except: [:index]
   def index 
-    @trip = Trip.all
+    if params[:search].present?
+      render :search
+    else
+      @trip = Trip.all
+    end
+    # @trip = Destination.all.find_by(city_name: params[:search])
   end
   def show 
     @trip = Trip.find(params[:id])
   end
   def new
-    @trip = Trip.new
+    byebug
+    # @trip = Trip.new
+    render :search
   end
 
   def create
-    byebug
+    # byebug
     params[:destination_id]
     @trip = Trip.new(trip_params)
     if @trip.save
@@ -45,6 +52,19 @@ class TripsController < ApplicationController
 
     redirect_to trips_path, status: :see_other
   end
+  def search
+    if params[:search].blank?
+      redirect_to new_trip_path
+    else
+      redirect_to trips_path(:search => params[:search])
+    end
+  end
+
+  # def search_filter
+  #   byebug
+  #   render :search
+  # end
+
   private
   def trip_params
     params.require(:trip).permit(:trip_type, :trip_name, :amount, :start_date, :end_date, :main_image, destination_id: [])
