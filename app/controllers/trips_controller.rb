@@ -1,14 +1,16 @@
 class TripsController < ApplicationController
   # before_action :authenticate_user!, except: [:index]
-  def index 
-    # byebug
-    if params[:search].blank?
-      redirect_to root_path(:search => params[:search])
-      @trip = Trip.all 
-    else
-      @trip = Destination.all.find_by(city_name: params[:search])
-      render :search 
-    end
+  def index  
+    byebug
+    @trip = if params[:search].blank?
+              Trip.all
+            else
+              @trip = Destination.all.find_by(city_name: params[:search])
+
+              @trip.city_name
+              # @start_date = params[:start_date]
+              # @end_date = params[:end_date]
+            end
   end
   def show 
     @trip = Trip.find(params[:id])
@@ -55,16 +57,14 @@ class TripsController < ApplicationController
     redirect_to trips_path, status: :see_other
   end
   def search
+    byebug
+    # redirect_to trips_path(:search => params[:search])
     redirect_to trips_path(:search => params[:search])
-    # redirect_to homes_path(:search => params[:search])
     # redirect_to root_path
     # render :root_path, search: params[:search]
   end
 
-  # def search_filter
-  #   byebug
-  #   render :search
-  # end
+
 
   private
   def trip_params

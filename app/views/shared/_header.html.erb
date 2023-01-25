@@ -17,12 +17,13 @@
         <div class="d-flex">
           <%= form_tag(trips_search_path, method: 'post', authenticity_token: false) do %>
           <div class='input-group'>
+            <!-- <#% byebug %> -->
             <%= text_field_tag(:search, params[:search], class: "form-control me-1", type: "search", placeholder: "Search by Destintaion,range or date") %>
             <%= submit_tag("Search", class: "btn btn-outline-success") %>
           </div>
           <% end %>
         </div>
-
+        
         
         <li class="nav-link">
         <% if user_signed_in? %>
@@ -36,7 +37,7 @@
           </li>
           <% else %>
            <li class="nav-item">
-          <%= link_to "Your booking", bookings_path,class: 'nav-link' %>
+          <%= link_to "Bookings", bookings_path,class: 'nav-link' %>
           </li>
           <% end %>
           <li class="nav-item">

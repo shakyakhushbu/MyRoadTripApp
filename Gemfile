@@ -77,3 +77,5 @@ gem 'byebug'
 gem 'pg'
 gem 'rubocop-rails',  require: false
 # gem 'has_secure_token'
+gem 'bootstrap-datepicker-rails'
+# gem 'bootstrap-slider-rails'  
