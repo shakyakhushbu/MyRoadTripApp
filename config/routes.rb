@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :homes
   resources :bookings
   resources :abouts
+  resources :admins
   # resources :searches
   get '/users/display', to: 'users#display'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

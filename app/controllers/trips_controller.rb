@@ -1,29 +1,27 @@
 class TripsController < ApplicationController
-  # before_action :authenticate_user!, except: [:index]
   def index  
-    # byebug
-    @trip = if params[:start_date].blank? && params[:end_date].blank? && params[:search].blank?
+    @trip = if params[:start_date].blank? && params[:end_date].blank? && params[:search].blank? 
+              byebug
               redirect_to root_path
-              Trip.all
+              @trip = Trip.all
             elsif
-            @a = Destination.all.find_by(city_name: params[:search])
+              byebug
+              @a = Destination.all.find_by(city_name: params[:search])
+              @a.trips
             elsif
-            Trip.all.find_by(trip_type: 'One day')
-            @b = Trip.all.find_by(start_date: params[:start_date])
-            @c = Trip.all.find_by(end_date: params[:end_date]) 
+              byebug
+              @b = Trip.all.find_by(start_date: params[:start_date])
+              @c = Trip.all.find_by(end_date: params[:end_date]) 
             end
   end
   def show 
     @trip = Trip.find(params[:id])
   end
   def new
-    # byebug
     @trip = Trip.new
-    # render :search
   end
 
   def create
-    # byebug
     params[:destination_id]
     @trip = Trip.new(trip_params)
     if @trip.save
@@ -59,10 +57,13 @@ class TripsController < ApplicationController
   end
   def search
     # byebug
+    # if current_user.admin?
+    #   @trip = Trip.all
+    # else
     # redirect_to trips_path(:search => params[:search])
     # redirect_to trips_path(:search => params[:search])
     redirect_to trips_path(start_date: params[:start_date], end_date: params[:end_date], search: params[:search])
-
+    # end
     # redirect_to root_path
     # render :root_path, search: params[:search]
   end
