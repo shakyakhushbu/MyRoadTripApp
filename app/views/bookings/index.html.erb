@@ -14,8 +14,8 @@
     <td><%= booking.booking_token %></td>
     <td><%= booking.trip.trip_name %></td>
     <td><%= booking.trip.amount %></td>
-    <td><%= booking.trip.start_date %></td>
-    <td><% c =  booking.trip.end_date %></td>
+    <td><%= booking.trip.start_date.strftime("%Y-%m-%d") %></td>
+    <td><%=  booking.trip.end_date.strftime("%Y-%m-%d") %></td>
   </tr>
     <% end %>
  </table>
