@@ -1,40 +1,40 @@
-<% if current_user.admin? %>
-<table>
+<%# <#% if current_user.admin? %>
+<%# <table>
   <tr>
     <th>Trip List</th>
     <th>Add new Trip Here</th>
     <th>Add Destination</th>
   </tr>
-  <tr>
-    <td>
-      <% @trip.each do |trip| %><br>
-      <%= link_to trip.trip_name, trip %>
-      <% end %>
-    </td>
-    <td><%= link_to "Add Trip", new_trip_path %><br>
-</td>
-<td><%= link_to "Show All Destination", destinations_path %></td>
-</tr>
-</table>
-<% else %>
-<div class="container">
+  <tr> %>
+    <%# <td>
+      <%# <% @trip.each do |trip| %><br> 
+      <%# <#%= link_to trip.trip_name, trip %>
+      <%# <% end %> 
+    <%# </td> %>
+    <%# <td><#%= link_to "Add Trip", new_trip_path %><br> 
+<%# </td> %>
+<%# <td><#%= link_to "Show All Destination", destinations_path %></td> 
+<%# </tr> %>
+<%# </table> %>
+<%# <#% else %> 
+<%# <div class="container">
 <div class="row row-cols-1 row-cols-md-3">
   <% @trip.each do |trip| %>
-      <div class="col-md-4">
-        <div class="card h-100">
-          <%= image_tag(trip.main_image,  size: "300x250") if trip.main_image.attached? %>
-          <div class="card-img-overlay">
+      <%# <div class="col-md-4">
+        <div class="card h-100"> %>
+          <%# <#%= image_tag(trip.main_image,  size: "300x250") if trip.main_image.attached? %> %>
+          <%# <div class="card-img-overlay">
           <h5 class="card-title"><%= link_to trip.trip_name, trip %></h5>
-        </div>
+        <%# </div>
           <div class="card-body">
             <h5 class="card-title"></h5>
           </div>
         </div>
-      </div>
-  <% end %>
-</div>
-</div>
-<% end %> -->
+      </div>  %>
+  <%# <#% end %> %>
+<%# </div>
+</div> %>
+<%# <#% end %>  %>
 
 <!-- <%#= @trip.city_name %> -->
 

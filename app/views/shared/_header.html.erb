@@ -14,16 +14,17 @@
         <%= link_to "About", abouts_path,class: 'nav-link' %>
         </li>
         
-        <div class="d-flex">
+         <div class="d-flex">
           <%= form_tag(trips_search_path, method: 'post', authenticity_token: false) do %>
-          <div class='input-group'>
-            <!-- <#% byebug %> -->
+          <div class='input-group'> 
             <%= text_field_tag(:search, params[:search], class: "form-control me-1", type: "search", placeholder: "Search by Destintaion,range or date") %>
             <%= submit_tag("Search", class: "btn btn-outline-success") %>
-          </div>
-          <% end %>
-        </div>
-        
+          </div> 
+          <% end %> 
+         </div> 
+        <li class="nav-item">
+        <%= link_to "Search here", abouts_path,class: 'nav-link' %>
+        </li>
         
         <li class="nav-link">
         <% if user_signed_in? %>
