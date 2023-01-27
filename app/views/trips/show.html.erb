@@ -16,8 +16,8 @@
     <td><%= @trip.trip_name %></td>
     <td><%= @trip.trip_type %></td>
     <td><%= @trip.amount %></td>
-    <td><%= @trip.start_date %></td>
-    <td><%= @trip.end_date %></td>
+    <td><%= @trip.start_date.strftime("%Y-%m-%d") %></td>
+    <td><%= @trip.end_date.strftime("%Y-%m-%d") %></td>
     <!-- <td><%#= @trip.destination_id %></td> -->
     <!-- <td><#%= @trip.destination_trips.last&.destination&.city_name %></td>  -->
       <!-- <td> -->

@@ -1,22 +1,26 @@
 class TripsController < ApplicationController
   def index  
-    @trip = if params[:start_date].blank? && params[:end_date].blank? && params[:search].blank? 
+    @trip = if params[:start_date].blank? && params[:end_date].blank? && params[:search].blank? && params[:trip_type]
               byebug
               redirect_to root_path
               @trip = Trip.all
-            elsif
+            elsif params[:start_date].blank? && params[:end_date].blank? && !params[:search].blank?
               byebug
               @a = Destination.all.find_by(city_name: params[:search])
-              @a.trips
-            elsif
+              @b = @a.trips
+            elsif !params[:start_date].blank? && !params[:end_date].blank? && params[:search].blank?
               byebug
-              @b = Trip.all.find_by(start_date: params[:start_date])
-              @c = Trip.all.find_by(end_date: params[:end_date]) 
+              @b = Trip.where("start_date >= :start_date AND end_date <= :end_date",
+              {start_date: params[:start_date], end_date: params[:end_date]})
+            elsif params[:trip_type].present?
+              @b = Trip.where(trip_type: params[:trip_type])
             end
   end
+
   def show 
     @trip = Trip.find(params[:id])
   end
+
   def new
     @trip = Trip.new
   end
@@ -56,14 +60,17 @@ class TripsController < ApplicationController
     redirect_to trips_path, status: :see_other
   end
   def search
-    # byebug
+    byebug
+    if params[:start_date].blank? && params[:end_date].blank? && params[:search].blank? && params[:trip_type].blank?
     # if current_user.admin?
     #   @trip = Trip.all
     # else
     # redirect_to trips_path(:search => params[:search])
     # redirect_to trips_path(:search => params[:search])
-    redirect_to trips_path(start_date: params[:start_date], end_date: params[:end_date], search: params[:search])
-    # end
+    redirect_to root_path
+  else
+    redirect_to trips_path(start_date: params[:start_date], end_date: params[:end_date], search: params[:search], trip_type: params[:trip_type])
+    end
     # redirect_to root_path
     # render :root_path, search: params[:search]
   end
