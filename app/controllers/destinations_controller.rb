@@ -12,7 +12,7 @@ class DestinationsController < ApplicationController
   def create
     @destination = Destination.new(destination_params)
     if @destination.save
-      byebug
+      # byebug
       @destination.create_hotel(hotel_name: params[:hotel][:hotel_name])
       redirect_to destinations_path
     else

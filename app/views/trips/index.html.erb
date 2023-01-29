@@ -47,6 +47,10 @@
 
 <% byebug %>
 
+
+<% if @b.empty? %>
+<p>No Trip Available</p>
+<% else %>
 <div class ='container'>
 </div>
   <div class="container">
@@ -66,22 +70,5 @@
       <% end %>
     </div> 
     </div> 
-   
-  <!-- <div class="container">
-  <div class="row row-cols-1 row-cols-md-3">
-    <#% @b.each do |trip| %>
-        <div class="col-md-4"> 
-          <div class="card h-100"> 
-            <#%= image_tag(trip.main_image,  size: "300x250") if trip.main_image.attached? %> 
-            <div class="card-img-overlay"> 
-              <h5 class="card-title"><#%= link_to trip.trip_name, trip %></h5> 
-          </div> 
-            <div class="card-body"> 
-              <h5 class="card-title"></h5> 
-            </div> 
-          </div> 
-        </div> 
-      <#% end %>
-    </div> 
-    </div>  -->
-<!-- <#%= @a.trips %> -->
+    
+<% end %>
