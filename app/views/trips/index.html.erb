@@ -42,18 +42,18 @@
 <br><br>
 
 <div class='container'>
-<%= form_with url: "trips/search", method: :post do |form| %>
-<%= form.date_field :start_date, hide_label: true, class: 'datepicker' %>
-<%= form.date_field :end_date, hide_label: true, class: 'datepicker' %>
-<%= form.select :trip_type, ["One Day Trip", "Two Days Trip", "Three Days Trip", "Four Days Trip", "Five Days trip", "Six Days Trip", "Seven Days Trip"],{:prompt => "Select Days Here"} %>   
-<%= form.select :min, ["2000", "5000", "6000", "8000", "10000"],{:prompt => "Minimun Charge"} %>
-<%= form.select :max, ["4000", "6000", "7000", "10000"],{:prompt => "Maximum Charge"} %>
-<%= form.submit 'Search' %> 
+<%= form_with url: trips_path, method: :get do |form| %>
+  <%= form.date_field :start_date, hide_label: true, class: 'datepicker' %>
+  <%= form.date_field :end_date, hide_label: true, class: 'datepicker' %>
+  <%= form.select :trip_type, ["One Day Trip", "Two Days Trip", "Three Days Trip", "Four Days Trip", "Five Days trip", "Six Days Trip", "Seven Days Trip"],{:prompt => "Select Days Here"} %>   
+  <%= form.select :min, ["2000", "5000", "6000", "8000", "10000"],{:prompt => "Minimun Charge"} %>
+  <%= form.select :max, ["4000", "6000", "7000", "10000"],{:prompt => "Maximum Charge"} %>
+  <%= form.submit 'Search' %> 
 <% end %>
 </div>
 <br><br>
 
-<% byebug %>
+<%# byebug %>
 
 
 <% if @trip.empty? %>

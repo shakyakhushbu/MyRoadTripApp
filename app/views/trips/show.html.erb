@@ -30,25 +30,50 @@
 </table>
 
 <br>
-<% if current_user.admin? %>
-<table style="width:100%">
+<%# if current_user.admin? %>
+<!-- <table style="width:100%">
 <tr>
 <th>Edit Trip</th>
 <th>Destroy Trip</th>
-<th>Go To All Trip List</th></tr>
-<tr>
-  <td><%= link_to "Edit Trips", edit_trip_path %></td>
-  <td><%= link_to "Destroy", trip_path(@trip), data: {
+<th>Go To All Trip List</th></tr> -->
+<!-- <tr> -->
+  <td><%#= link_to "Edit Trips", edit_trip_path %></td>
+  <td><%#= link_to "Destroy", trip_path(@trip), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></td>
-  <td><%= link_to "Show All Trips", trips_path %></td></tr>
-</table>
+  <td><%#= link_to "Show All Trips", trips_path %></td></tr>
+<!-- </table> -->
+<%# else %>
+<!-- <h4>Book Your Trip Now</h4> -->
+
+<%#= link_to 'Book Your Trip Now' , new_booking_path(trip_id: @trip) %>
+
+<%# end %>
+
+
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+  <table style="width:100%">
+  <tr>
+  <th>Edit Trip</th>
+  <th>Destroy Trip</th>
+  <th>Go To All Trip List</th></tr>
+  <tr>
+    <td><%= link_to "Edit Trips", edit_trip_path %></td>
+    <td><%= link_to "Destroy", trip_path(@trip), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    } %></td>
+    <%# <td>= link_to "Show All Trips", trips_path</td></tr> %>
+    <td><%= link_to "Show All Trips", admins_path %></td></tr>
+  </table>
+  <% elsif current_user.user? %>
+  <h4>Book Your Trip Now</h4>
+  <%= link_to 'Book Your Trip Now' , new_booking_path(trip_id: @trip) %>
+  <% end %>
+  
 <% else %>
 <h4>Book Your Trip Now</h4>
-
 <%= link_to 'Book Your Trip Now' , new_booking_path(trip_id: @trip) %>
-
 <% end %>
-
-
