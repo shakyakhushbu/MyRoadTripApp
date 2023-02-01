@@ -12,15 +12,28 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
   def create
-    @booking = Booking.new(params_booking)
+    # @booking = Booking.new(params_booking)
     @trip = Trip.find_by_id(params[:trip_id])
-    byebug
+    # byebug
     
-    current_user.bookings.create(trip_id: params[:trip_id], user_name: params[:booking][:user_name], contact_detail: params[:booking][:contact_detail])
-    flash[:notice] = "Thank You!! Your Booking is confirmed"
-    byebug
-    @booking
-    redirect_to root_path
+    # if @booking.save
+    @booking = current_user.bookings.create(trip_id: params[:trip_id], user_name: params[:booking][:user_name], contact_detail: params[:booking][:contact_detail])
+      byebug
+      if @booking.save 
+        BookingMailer.with(booking: @booking).new_booking_email.deliver
+        flash[:notice] = "Thank You!! Your Booking is confirmed"
+        redirect_to root_path
+      end
+
+
+    #   current_user.bookings.create(trip_id: params[:trip_id], user_name: params[:booking][:user_name], contact_detail: params[:booking][:contact_detail])
+    # if @booking.save
+    #   BookingMailer.with(booking: @booking).new_booking_email.deliver_later
+    #   flash[:notice] = "Thank You!! Your Booking is confirmed"
+    #   redirect_to root_path
+    # else
+    #   render :new
+    # end
     
   end
  
