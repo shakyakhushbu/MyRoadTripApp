@@ -1,8 +1,9 @@
 class UserMailer < ApplicationMailer
-  def welcome_email
-    @user = User.last
-    @email = User.last.email
+  
+  def welcome_email(user)
+    byebug
+    @user = user.first_name
     mail(to: 'test1@yopmail.com', subject: "You have successfully signed in!")
-    # mail(to: @email, subject: "You ahve successfully signed in!")
+    # mail(to: user.email, subject: "You have successfully signed in!")
   end
 end
