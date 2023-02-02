@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :bookings
   has_many :trips, through: :bookings
+  after_create :welcome_email
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -11,10 +12,8 @@ class User < ApplicationRecord
       self.role ||= :user
     end
   end  
-  # byebug
-  # before_create :my_method
 
-  # def my_method
-  #  self.skip_confirmation!
-  # end     
+  def welcome_email
+    UserMailer.welcome_email.deliver_now
+  end
 end
