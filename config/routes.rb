@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :bookings
   resources :abouts
   resources :admins
+  resources :user_bookings
   get '/users/display', to: 'users#display'
 
   post '/trips/search', to: 'trips#search'

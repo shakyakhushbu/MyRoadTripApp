@@ -3,8 +3,9 @@ class BookingsController < ApplicationController
   # has_secure_token :booking_token
   def index
     @booking = Booking.all
-    @user = current_user
+    # @user = current_user
   end
+  byebug
   def show
     # @booking = Booking.find(params[:id])
   end
@@ -20,7 +21,7 @@ class BookingsController < ApplicationController
     @booking = current_user.bookings.create(trip_id: params[:trip_id], user_name: params[:booking][:user_name], contact_detail: params[:booking][:contact_detail])
       byebug
       if @booking.save 
-        BookingMailer.with(booking: @booking).new_booking_email.deliver
+        BookingMailer.with(booking: @booking).new_booking_email.deliver_now
         flash[:notice] = "Thank You!! Your Booking is confirmed"
         redirect_to root_path
       end

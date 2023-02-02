@@ -1,0 +1,15 @@
+<h1>Hello</h1>
+<table>
+  <tr>
+    <th>Destination List</th>
+  </tr>
+  <tr>
+    <td>
+        <% @bookings.each do |x| %><br>
+      <%= link_to x.user_name, x %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<br>
