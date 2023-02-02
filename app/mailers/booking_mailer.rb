@@ -3,10 +3,11 @@ class BookingMailer < ApplicationMailer
    
 
   def new_booking_email
-    byebug
     @booking = params[:booking]
+    @email = @booking.user.email
     # @email = @current_user.email
     mail(to: 'test1@yopmail.com', subject: "Your Booking is confirmed!")
+    # mail(to: @email, subject: "Your Booking is confirmed!")
   end
 
 end

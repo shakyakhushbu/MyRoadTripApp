@@ -1,7 +1,6 @@
 class TripsController < ApplicationController
   def index 
     @trip = Trip.all
-    byebug
     filter_trips(params)
     if @trip.present?
       respond_to do |format|
@@ -36,7 +35,6 @@ class TripsController < ApplicationController
       params[:destination_id].each do |destination_id|
         @trip.destination_trips.create(destination_id: destination_id)
       end if params[:destination_id].any?
-      byebug
       redirect_to root_path
     else
       render :index, status: :unprocessable_entity

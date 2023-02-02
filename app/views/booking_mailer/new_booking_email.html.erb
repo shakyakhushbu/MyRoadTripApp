@@ -3,16 +3,19 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>Your Booking is confirmed <%= @booking.user_name %>!</p>
+    <h1>Welcome to Road Trip Planner</h1>
+    <p>Your Booking is confirmed <%= @booking.user.first_name %>!</p>
     <p>
     Order details<br>
     --------------------------
     </p>
-    <p>Contact Number: <%= @booking.contact_detail %></p>
-    <p>Token: <%= @booking.booking_token %></p>
+    <p>Booking Id: <%= @booking.booking_token %></p>
+    <p>Start Date: <%= @booking.trip.start_date.strftime("%Y-%m-%d") %></p>
+    <p>End Date: <%= @booking.trip.end_date.strftime("%Y-%m-%d") %></p>
+    <p>Trip Name: <%= @booking.trip.trip_name %></p>
+    <p>Amount Paid: <%= @booking.trip.amount %></p>
     <p>
     Message:<br>
-    ----------
-    </p>
-   
+    <p>If You Have any Enquiry please contact: 1234567890</p>
   </body>
+</html>

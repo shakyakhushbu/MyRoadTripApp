@@ -1,0 +1,32 @@
+<h2>User Details</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>User Name</th>
+    <th>Booking Token</th>
+    <th>Trip Type</th>
+    <th>Trip Name</th>
+    <th>Amount</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Contact Details</th>
+   
+  </tr>
+  <tr>
+    <td><%= @booking.user.first_name %></td>
+    <td><%= @booking.booking_token %></td>
+    <td><%= @booking.trip.trip_type %></td>
+    <td><%= @booking.trip.trip_name %></td>
+    <td><%= @booking.trip.amount %></td>
+    <td><%= @booking.trip.start_date.strftime("%Y-%m-%d") %></td>
+    <td><%= @booking.trip.end_date.strftime("%Y-%m-%d") %></td>
+    <td><%= @booking.contact_detail %></td>
+  </tr>
+  
+</table>
+
+<br>
+    <td><%= link_to "Destroy", booking_path(@booking), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    } %></td>

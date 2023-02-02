@@ -1,24 +1,45 @@
-<% if current_user.bookings.count == 0 %>
-<p>You have no booking yet</p>
+<% if current_user.user? %>
+  <% if current_user.bookings.count == 0 %>
+  <p>You have no booking yet</p>
+  <% else %>
+  <table>
+    <tr>
+      <th>Booking Token</th>
+      <th>Trip Name</th>
+      <th>Trip Amount</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+      <% current_user.bookings.each do |booking| %>
+    <tr>
+      <td><%= booking.booking_token %></td>
+      <td><%= booking.trip.trip_name %></td>
+      <td><%= booking.trip.amount %></td>
+      <td><%= booking.trip.start_date.strftime("%Y-%m-%d") %></td>
+      <td><%=  booking.trip.end_date.strftime("%Y-%m-%d") %></td>
+    </tr>
+      <% end %>
+   </table>
+  <% end %>
 <% else %>
-<table>
-  <tr>
-    <th>Booking Token</th>
-    <th>Trip Name</th>
-    <th>Trip Amount</th>
-    <th>Start Date</th>
-    <th>End Date</th>
-  </tr>
-    <% current_user.bookings.each do |booking| %>
-  <tr>
-    <td><%= booking.booking_token %></td>
-    <td><%= booking.trip.trip_name %></td>
-    <td><%= booking.trip.amount %></td>
-    <td><%= booking.trip.start_date.strftime("%Y-%m-%d") %></td>
-    <td><%=  booking.trip.end_date.strftime("%Y-%m-%d") %></td>
-  </tr>
-    <% end %>
- </table>
+  <% if @bookings.count == 0 %>
+    <h1>There is no booking yet</h1>
+  <% else %>
+    
+    <table>
+      <tr>
+        <th>Booking List</th>
+      </tr>
+      <tr>
+        <td>
+          <% @bookings.each do |x| %><br>
+          <p>Click Here To Check the details</p>
+          <%= link_to x.user.first_name, x %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  <% end %>    
 <% end %>
 
 
