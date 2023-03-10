@@ -1,13 +1,14 @@
 class TripsController < ApplicationController
-# before_action :authenticate_user!, except: :index, notice: 'you must sign in first!'
-  
   def index 
-    byebug
     @trip = Trip.all
     filter_trips(params)
-    respond_to do |format|
-      format.json { render json: @trip, each_serializer: TripSerializer }
-      format.html { render :index }
+    if @trip.present?
+      respond_to do |format|
+        format.json { render json: @trip, each_serializer: TripSerializer }
+        format.html { render :index }
+      end
+    else
+      render json: {message: 'Trip Not Found'}, status: 404
     end
   end
 
@@ -34,7 +35,6 @@ class TripsController < ApplicationController
       params[:destination_id].each do |destination_id|
         @trip.destination_trips.create(destination_id: destination_id)
       end if params[:destination_id].any?
-      byebug
       redirect_to root_path
     else
       render :index, status: :unprocessable_entity
@@ -62,13 +62,7 @@ class TripsController < ApplicationController
     redirect_to trips_path, status: :see_other
   end
   def search
-    byebug
-    # if params[:start_date].blank? && params[:end_date].blank? && params[:search].blank? && params[:trip_type].blank? && params[:min].blank? && params[:max].blank?
-    # redirect_to root_path
-    # else
-    # byebug
     redirect_to trips_path(start_date: params[:start_date], end_date: params[:end_date], search: params[:search], trip_type: params[:trip_type], min: params[:min], max: params[:max])
-    # end
   end
 
   private
@@ -79,10 +73,13 @@ class TripsController < ApplicationController
 
   def filter_trips(params)
     @trip = @trip.joins(:destinations).where(destinations: { city_name: params[:search] }) if !params[:search].blank?
-    @trip = @trip.where(trip_type: params[:trip_type]) if !params[:trip_type].blank?
-    @trip = @trip.where("start_date >= :start_date AND end_date <= :end_date",
-      {start_date: params[:start_date], end_date: params[:end_date]}) if !params[:start_date].blank? && !params[:end_date].blank?
-    @trip = @trip.where('amount >= ? AND amount <= ?', params[:min], params[:max]) if !params[:min].blank? && !params[:max].blank?
-    @trip = @trip.where("start_date >= ? AND end_date <= ?", params[:start_date], params[:end_date]) if !params[:start_date].blank? && !params[:end_date].blank?
+    # @trip = @trip.where(trip_type: params[:trip_type]) if !params[:trip_type].blank?
+    # @trip = @trip.where("start_date >= :start_date AND end_date <= :end_date",
+    #   {start_date: params[:start_date], end_date: params[:end_date]}) if !params[:start_date].blank? && !params[:end_date].blank?
+    # @trip = @trip.where('amount >= ? AND amount <= ?', params[:min], params[:max]) if !params[:min].blank? && !params[:max].blank?
+    # @trip = @trip.where("start_date >= ? AND end_date <= ?", params[:start_date], params[:end_date]) if !params[:start_date].blank? && !params[:end_date].blank?
+    @trip = @trip.filter_by_trip_type(params[:trip_type]) if !params[:trip_type].blank?
+    @trip = @trip.filter_by_amount(params[:min], params[:max]) if !params[:min].blank? && !params[:max].blank?
+    @trip = @trip.filter_by_start_and_end_date(params[:start_date], params[:end_date]) if !params[:start_date].blank? && !params[:end_date].blank?
   end
 end
