@@ -66,3 +66,44 @@ rails g devise admins
    <td><%= @trip.destination_trips.find_by(:destination_id).destination.city_name %></td>
 
    a.bookings.pluck(:user_id)
+
+
+   <li class="nav-item">
+        <% if user_signed_in? %>
+
+        <%# <li class="nav-link"> %>
+
+          <%#= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete}, class: 'nav-link' %>
+             <li class="nav-item">
+          <%= link_to "Bookings", bookings_path,class: 'nav-link' %>
+          </li>
+        </li>
+          <%if current_user.admin? %>
+           <li class="nav-item">
+          <%= link_to "Trips", admins_path,class: 'nav-link' %>
+          </li>
+          <!-- <li class="nav-item">
+          <%#= link_to "UserBookings", user_bookings_path,class: 'nav-link' %>
+          </li> -->
+          <%# else %>
+           <!-- <li class="nav-item">
+          <%#= link_to "Bookings", bookings_path,class: 'nav-link' %>
+          </li> -->
+
+
+          <% end %>
+           <li class="nav-item">
+          <%= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete}, class: 'nav-link' %>
+        </li>
+          <li class="nav-item">
+          <%= current_user.first_name %>
+          </li>
+        <% else %>
+            <li class="nav-item">
+              <%= link_to 'Sign Up', new_user_registration_path,class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+            <%= link_to 'Login', new_user_session_path,class: 'nav-link' %>
+            </li>
+        <% end %>
+        </li>

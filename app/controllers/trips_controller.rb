@@ -2,14 +2,14 @@ class TripsController < ApplicationController
   def index 
     @trip = Trip.all
     filter_trips(params)
-    if @trip.present?
-      respond_to do |format|
-        format.json { render json: @trip, each_serializer: TripSerializer }
-        format.html { render :index }
-      end
-    else
-      render json: {message: 'Trip Not Found'}, status: 404
-    end
+    # if @trip.present?
+    #   respond_to do |format|
+    #     format.json { render json: @trip, each_serializer: TripSerializer }
+    #     format.html { render :index }
+    #   end
+    # else
+    #   render json: {message: 'Trip Not Found'}, status: 404
+    # end
   end
 
   def show 
